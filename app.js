@@ -8,13 +8,11 @@ const cookieParser = require("cookie-parser");
 const postRoutes = require("./routes/admin/post");
 
 const db = process.env.MONGODB_URI;
+const CLIENT_URL = process.env.CLIENT_URL;
 const app = express();
 app.use(cookieParser());
 app.set("trust proxy", 1);
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://client-hospital-kappa.vercel.app",
-];
+const allowedOrigins = ["http://localhost:5173", CLIENT_URL];
 
 app.use(
   cors({
