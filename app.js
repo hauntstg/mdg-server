@@ -6,12 +6,13 @@ const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const postRoutes = require("./routes/admin/post");
+const feedbackRoutes = require("./routes/admin/feedback");
 
 const db = process.env.MONGODB_URI;
 const CLIENT_URL = process.env.CLIENT_URL;
 const app = express();
 app.use(cookieParser());
-app.set("trust proxy", 1);
+app.set("trust proxy", true);
 const allowedOrigins = ["http://localhost:5173", CLIENT_URL];
 
 app.use(
@@ -44,6 +45,7 @@ app.get("/check-health", (req, res, next) => {
 });
 
 app.use("/admin", postRoutes);
+app.use("/admin", feedbackRoutes);
 // app.use("/admin", authRoutes);
 
 const PORT = process.env.PORT || 5000;

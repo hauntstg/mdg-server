@@ -27,7 +27,7 @@ exports.createPost = async (req, res, next) => {
     });
 
     await newPost.save();
-    console.log("sucessfully!");
+
     res.status(201).json(newPost);
   } catch (err) {
     console.error(err);
@@ -50,7 +50,7 @@ exports.postUploadEditorImage = async (req, res, next) => {
   }
 };
 
-exports.getPost = async (req, res, next) => {
+exports.getPosts = async (req, res, next) => {
   try {
     try {
       const posts = await Post.find().sort({ createdAt: -1 });

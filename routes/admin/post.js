@@ -17,7 +17,7 @@ router.post(
   postController.postUploadEditorImage
 );
 
-router.get("/list-post", postController.getPost);
+router.get("/list-post", postController.getPosts);
 
 router.get("/post/:slug", postController.getPostDetail);
 
